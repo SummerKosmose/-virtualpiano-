@@ -1,0 +1,345 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tay my mother</title>
+
+<style>
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#2e680795;
+    overflow:hidden;
+    font-family: "Courier New", monospace;
+    position:relative;
+}
+
+/* =========================
+   HEART BACKGROUND
+========================= */
+
+.h1{
+    top:15%;
+    left:10%;
+}
+
+.h2{
+    bottom:12%;
+    right:15%;
+}
+
+.h3{
+    top:65%;
+    left:20%;
+    transform:rotate(-45deg) scale(0.7);
+}
+
+/* =========================
+   MAIN WINDOW
+========================= */
+
+.window{
+    width:650px;
+    background:#2a65337b;
+    border:3px dashed #2a6533bb;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(253, 0, 0, 0.08);
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+    height:70px;
+    background:#e0e8d9;
+    border-bottom:2px solid #bcdeb5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+}
+
+.search{
+    width:170px;
+    height:38px;
+    border-radius:20px;
+    border:1px solid #2a653368;
+    background:#f4f1ee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    font-size:14px;
+    background-color:#3782423f;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    width:32px;
+    height:32px;
+    border-radius:8px;
+    border:1px solid #d0c5b9;
+    background:#f4f1ee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    font-size:22px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    display:flex;
+    gap:18px;
+    padding:18px;
+}
+
+/* =========================
+   LEFT CARD
+========================= */
+
+.left-card{
+    width:250px;
+    height:320px;
+    background:#f4efea;
+    border-radius:12px;
+    border:1px solid #d7cbc0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+.placeholder{
+    width:190px;
+    height:225px;
+    border:3px dashed #cdbfae;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#a59483;
+    font-size:18px;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.right{
+    flex:1;
+}
+
+/* TEXT BOX */
+
+.textbox{
+    background:#f4f1ee;
+    border:1px solid #d1c5b9;
+    border-radius:10px;
+    padding:20px;
+    color:#6e6d6d;
+    font-size:17px;
+    text-align:center;
+    line-height:1.6;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* HIDDEN TEXTBOXES */
+
+.hidden{
+    display:none;
+}
+
+/* NAVIGATION */
+
+.navbox{
+    margin-top:25px;
+}
+
+.navtitle{
+    height:40px;
+    border-radius:20px;
+    background:#f4f1ee;
+    border:1px solid #d1c5b9;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    color:#777;
+    font-size:16px;
+}
+
+.links{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    color:#155f3d;
+    font-size:20px;
+}
+
+.links div{
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.links div:hover{
+    transform:translateX(5px);
+    color:#f5efe4;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    height:60px;
+    border-top:1px solid #cbbcae;
+    display:flex;
+    align-items:center;
+    padding-left:20px;
+    color:#aaa;
+    font-size:14px;
+    background:#f6f4f2;
+}
+
+.profile-img{
+    height:220px;
+    width:187px;
+    border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEARTS -->
+
+<div class="heart h1"></div>
+<div class="heart h2"></div>
+<div class="heart h3"></div>
+
+<!-- MAIN WINDOW -->
+
+<div class="window">
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <div class="search">
+            🔍 Taylor Swift
+        </div>
+
+        <div class="controls">
+            <div class="btn">–</div>
+            <div class="btn">×</div>
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left-card">
+
+            <div class="placeholder">
+                <img src="taylorrrrr.png" class="profile-img">
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right">
+
+            <!-- TEXT BOXES -->
+
+            <div class="textbox" id="box1">
+                hiiiii this is a web forrr TAYLOR SWIFTTTTT she is my <b>second</b> fav artist !!!!!!!
+            </div>
+
+            <div class="textbox hidden" id="box2">
+                 hiii frik u told u i can do it hahahahhaha 
+            </div>
+
+            <div class="textbox hidden" id="box3">
+                 was able to do it cuz uk  I GOTA MAKE U SING cant waste that talent of urs 
+            </div>
+
+            <div class="textbox hidden" id="box4">
+                sor it has my name on the top ill try to remove it ok but that will take time sor b carefull okkkk 
+            </div>
+
+            <div class="textbox hidden" id="box5">
+               <a href="EntomologyBook.pdf"_blank>ill always text in this section also here is a book i found </a>
+            </div>
+
+            <!-- NAVIGATION -->
+
+            <div class="navbox">
+
+                <div class="navtitle">
+                    navigation
+                    <span>⌄</span>
+                </div>
+
+                <div class="links">
+                    <div onclick="showBox('box2')">~_~ abt tayyy</div>
+                    <div onclick="showBox('box3')">~_~ y i lik her</div>
+                    <div onclick="showBox('box4')">~_~ y u should lik her</div>
+                    <div onclick="showBox('box5')">~_~ her bank statment</div>
+                </div>
+                <img src="Screenshot 2026-05-26 185753.png">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function showBox(id){
+
+    // hide all text boxes
+    const boxes = document.querySelectorAll('.textbox');
+
+    boxes.forEach(box => {
+        box.classList.add('hidden');
+    });
+
+    // show selected box
+    document.getElementById(id).classList.remove('hidden');
+}
+
+</script>
+
+</body>
+</html>
