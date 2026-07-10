@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Pitch Trainer</title>
+
+    <link rel="stylesheet" href="PerfectPitchTrainer.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🎵 Perfect Pitch Trainer</h1>
+
+        <!-- Progress -->
+        <div class="progress-section">
+
+            <div class="progress-text">
+                Progress
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+
+        </div>
+
+        <!-- Score -->
+
+        <div class="score">
+            Score: 0 / 0
+        </div>
+
+        <!-- Hear Note -->
+
+        <button class="hear-btn">
+            🎧 Hear Note
+        </button>
+        <p class="current-note">Press "Hear Note" to begin!</p>
+
+        <!-- Answer Buttons -->
+
+        <div class="answers">
+
+            <button>C</button>
+            <button>D</button>
+            <button>E</button>
+            <button>F</button>
+            <button>G</button>
+            <button>A</button>
+            <button>B</button>
+
+        </div>
+
+        <!-- Options -->
+
+        <div class="options">
+
+            <h2>Practice Notes</h2>
+
+            <label><input type="checkbox" checked> C</label>
+            <label><input type="checkbox" checked> D</label>
+            <label><input type="checkbox" checked> E</label>
+            <label><input type="checkbox" checked> F</label>
+            <label><input type="checkbox" checked> G</label>
+            <label><input type="checkbox" checked> A</label>
+            <label><input type="checkbox" checked> B</label>
+
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="PerfectPitchTrainer.js"></script>
+
+</body>
+</html>

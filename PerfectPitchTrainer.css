@@ -1,0 +1,168 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#f3f5f9;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+}
+
+.container{
+
+    width:700px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+h1{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.progress-section{
+
+    margin-bottom:25px;
+
+}
+
+.progress-text{
+
+    margin-bottom:8px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:18px;
+
+    background:#ddd;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    width:30%;
+
+    height:100%;
+
+    background:#4caf50;
+
+}
+
+.score{
+
+    font-size:22px;
+
+    text-align:center;
+
+    margin:30px 0;
+
+}
+
+.hear-btn{
+
+    width:100%;
+
+    padding:18px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    margin-bottom:30px;
+
+}
+
+.answers{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+
+    margin-bottom:40px;
+
+}
+
+.answers button{
+
+    padding:18px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+}
+
+.options{
+
+    border-top:1px solid #ddd;
+
+    padding-top:30px;
+
+}
+
+.options h2{
+
+    margin-bottom:15px;
+
+}
+
+.options label{
+
+    display:block;
+
+    margin:10px 0;
+
+    font-size:18px;
+
+}
+.current-note{
+
+    text-align:center;
+
+    font-size:24px;
+
+    margin:20px 0;
+
+    font-weight:bold;
+
+}

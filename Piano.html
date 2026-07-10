@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title> ♡ Piano Play ♡</title><body>
+  
+  <link rel="stylesheet" href="Piano.css">
+
+<!-- SETTINGS ICON -->
+
+<button class="settings-icon" id="settingsBtn">
+  ⚙
+</button>
+
+<!-- SETTINGS PANEL -->
+
+<div class="settings-panel" id="settingsPanel">
+
+  <h3>Settings</h3>
+
+  <div class="settings-option">
+    <label>Master Volume</label>
+    <input type="range" min="0" max="100" value="70">
+  </div>
+
+  <div class="settings-option">
+    <label>Keyboard Brightness</label>
+    <input type="range" min="50" max="120" value="100">
+  </div>
+
+</div>
+
+<div class="container">
+
+  <div class="piano">
+
+    <div class="piano-shadow"></div>
+
+    <div class="note-screen" id="noteScreen">
+      ---
+    </div>
+
+    <button id="themeBtn">
+      Night Mode
+    </button>
+
+    <div class="piano-buttons">
+
+      <button id="sustainBtn">
+        Sustain: OFF
+      </button>
+
+      <button id="softBtn">
+        Soft: OFF
+      </button>
+
+    </div>
+
+    <div class="keyboard-panel">
+
+      <div class="power-section">
+        <div class="power-light"></div>
+        <div class="tiny-label">POWER</div>
+      </div>
+
+      <div class="slider-group">
+        <input 
+          type="range"
+          id="volumeSlider"
+          min="0"
+          max="100"
+          value="70"
+        >
+        <div class="tiny-label">VOLUME</div>
+      </div>
+
+      <div class="speaker"></div>
+
+    </div>
+
+    <!-- WHITE KEYS -->
+
+    <div class="white-key" data-note="C3">C3<br><br>1</div>
+    <div class="white-key" data-note="D3">D3<br><br>3</div>
+    <div class="white-key" data-note="E3">E3<br><br>5</div>
+    <div class="white-key" data-note="F3">F3<br><br>6</div>
+    <div class="white-key" data-note="G3">G3<br><br>8</div>
+    <div class="white-key" data-note="A3">A3<br><br>0</div>
+    <div class="white-key" data-note="B3">B3<br><br>=</div>
+
+    <div class="white-key" data-note="C4">C4<br><br>q</div>
+    <div class="white-key" data-note="D4">D4<br><br>e</div>
+    <div class="white-key" data-note="E4">E4<br><br>t</div>
+    <div class="white-key" data-note="F4">F4<br><br>y</div>
+    <div class="white-key" data-note="G4">G4<br><br>i</div>
+    <div class="white-key" data-note="A4">A4<br><br>p</div>
+    <div class="white-key" data-note="B4">B4<br><br>]</div>
+
+    <div class="white-key" data-note="C5">C5<br><br>a</div>
+    <div class="white-key" data-note="D5">D5<br><br>d</div>
+    <div class="white-key" data-note="E5">E5<br><br>g</div>
+    <div class="white-key" data-note="F5">F5<br><br>h</div>
+    <div class="white-key" data-note="G5">G5<br><br>k</div>
+    <div class="white-key" data-note="A5">A5<br><br>;</div>
+    <div class="white-key" data-note="B5">B5<br><br>z</div>
+
+    <!-- BLACK KEYS -->
+
+    <div class="black-key" data-note="C#3" style="left:88px;">C#3<br><br>2</div>
+    <div class="black-key" data-note="D#3" style="left:127px;">D#3<br><br>4</div>
+    <div class="black-key" data-note="F#3" style="left:206px;">F#3<br><br>7</div>
+    <div class="black-key" data-note="G#3" style="left:246px;">G#3<br><br>9</div>
+    <div class="black-key" data-note="A#3" style="left:285px;">A#3<br><br>-</div>
+
+    <div class="black-key" data-note="C#4" style="left:365px;">C#4<br><br>w</div>
+    <div class="black-key" data-note="D#4" style="left:406px;">D#4<br><br>r</div>
+    <div class="black-key" data-note="F#4" style="left:486px;">F#4<br><br>u</div>
+    <div class="black-key" data-note="G#4" style="left:526px;">G#4<br><br>o</div>
+    <div class="black-key" data-note="A#4" style="left:566px;">A#4<br><br>[</div>
+
+    <div class="black-key" data-note="C#5" style="left:645px;">C#5<br><br>s</div>
+    <div class="black-key" data-note="D#5" style="left:688px;">D#5<br><br>f</div>
+    <div class="black-key" data-note="F#5" style="left:766px;">F#5<br><br>j</div>
+    <div class="black-key" data-note="G#5" style="left:806px;">G#5<br><br>l</div>
+    <div class="black-key" data-note="A#5" style="left:846px;">A#5<br><br>'</div>
+
+  </div>
+
+</div>
+<script>
+
+/* SETTINGS PANEL */
+
+const settingsBtn =
+document.getElementById('settingsBtn');
+
+const settingsPanel =
+document.getElementById('settingsPanel');
+
+settingsBtn.addEventListener('click',()=>{
+
+  settingsPanel.classList.toggle('show');
+
+});
+
+</script>
+<script>
+
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioCtx = new AudioContext();
+
+let sustain = false;
+let softPedal = false;
+let masterVolume = 0.7;
+
+const sustainBtn = document.getElementById('sustainBtn');
+const softBtn = document.getElementById('softBtn');
+const themeBtn = document.getElementById('themeBtn');
+const noteScreen = document.getElementById('noteScreen');
+const volumeSlider = document.getElementById('volumeSlider');
+
+let activeNotesDisplay = [];
+let clearTimer;
+
+/* NOTE SCREEN */
+
+function updateNoteScreen(){
+
+  if(activeNotesDisplay.length === 0){
+
+    noteScreen.textContent = "---";
+
+  }else{
+
+    noteScreen.textContent =
+      activeNotesDisplay.join("  ");
+
+  }
+
+}
+
+/* BUTTONS */
+
+sustainBtn.addEventListener('click',()=>{
+
+  sustain=!sustain;
+
+  sustainBtn.textContent=
+    sustain ? 'Sustain: ON' : 'Sustain: OFF';
+
+  sustainBtn.classList.toggle('active');
+
+});
+
+softBtn.addEventListener('click',()=>{
+
+  softPedal=!softPedal;
+
+  softBtn.textContent=
+    softPedal ? 'Soft: ON' : 'Soft: OFF';
+
+  softBtn.classList.toggle('active');
+
+});
+
+themeBtn.addEventListener('click',()=>{
+
+  document.body.classList.toggle('dark-mode');
+
+  themeBtn.textContent=
+    document.body.classList.contains('dark-mode')
+    ? 'Day Mode'
+    : 'Night Mode';
+
+});
+
+/* VOLUME */
+
+volumeSlider.addEventListener('input',()=>{
+
+  masterVolume = volumeSlider.value / 100;
+
+});
+
+/* FREQUENCIES */
+
+const frequencies={
+
+'C3':130.81,'C#3':138.59,'D3':146.83,'D#3':155.56,
+'E3':164.81,'F3':174.61,'F#3':185.00,'G3':196.00,
+'G#3':207.65,'A3':220.00,'A#3':233.08,'B3':246.94,
+
+'C4':261.63,'C#4':277.18,'D4':293.66,'D#4':311.13,
+'E4':329.63,'F4':349.23,'F#4':369.99,'G4':392.00,
+'G#4':415.30,'A4':440.00,'A#4':466.16,'B4':493.88,
+
+'C5':523.25,'C#5':554.37,'D5':587.33,'D#5':622.25,
+'E5':659.25,'F5':698.46,'F#5':739.99,'G5':783.99,
+'G#5':830.61,'A5':880.00,'A#5':932.33,'B5':987.77
+
+};
+
+const activeOscillators={};
+
+/* PLAY NOTE */
+
+function startNote(note){
+
+  if(activeOscillators[note]) return;
+
+  if(audioCtx.state === 'suspended'){
+    audioCtx.resume();
+  }
+
+  clearTimeout(clearTimer);
+
+  if(!activeNotesDisplay.includes(note)){
+    activeNotesDisplay.push(note);
+  }
+
+  updateNoteScreen();
+
+  const now=audioCtx.currentTime;
+
+  const osc1=audioCtx.createOscillator();
+  const osc2=audioCtx.createOscillator();
+  const osc3=audioCtx.createOscillator();
+
+  const gain1=audioCtx.createGain();
+  const gain2=audioCtx.createGain();
+  const gain3=audioCtx.createGain();
+
+  osc1.type='triangle';
+  osc2.type='sine';
+  osc3.type='sine';
+
+  osc1.frequency.value=frequencies[note];
+  osc2.frequency.value=frequencies[note]*2;
+  osc3.frequency.value=frequencies[note]*3;
+
+  const softMultiplier = softPedal ? 0.45 : 1;
+
+  gain1.gain.setValueAtTime(
+    0.28 * masterVolume * softMultiplier,
+    now
+  );
+
+  gain2.gain.setValueAtTime(
+    0.09 * masterVolume * softMultiplier,
+    now
+  );
+
+  gain3.gain.setValueAtTime(
+    0.04 * masterVolume * softMultiplier,
+    now
+  );
+
+  gain1.gain.linearRampToValueAtTime(
+    0.35 * masterVolume * softMultiplier,
+    now+0.01
+  );
+
+  gain1.gain.exponentialRampToValueAtTime(
+    0.22 * masterVolume * softMultiplier,
+    now+0.3
+  );
+
+  osc1.connect(gain1);
+  osc2.connect(gain2);
+  osc3.connect(gain3);
+
+  gain1.connect(audioCtx.destination);
+  gain2.connect(audioCtx.destination);
+  gain3.connect(audioCtx.destination);
+
+  osc1.start();
+  osc2.start();
+  osc3.start();
+
+  activeOscillators[note]={
+    oscillators:[osc1,osc2,osc3],
+    gains:[gain1,gain2,gain3]
+  };
+
+}
+
+/* STOP NOTE */
+
+function stopNote(note){
+
+  const active=activeOscillators[note];
+
+  if(!active) return;
+
+  const now=audioCtx.currentTime;
+
+  active.gains.forEach(gain=>{
+
+    gain.gain.cancelScheduledValues(now);
+
+    gain.gain.setValueAtTime(
+      gain.gain.value,
+      now
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.0001,
+      now + (sustain ? 1.5 : 0.35)
+    );
+
+  });
+
+  active.oscillators.forEach(osc=>{
+
+    osc.stop(
+      now + (sustain ? 1.5 : 0.35)
+    );
+
+  });
+
+  delete activeOscillators[note];
+
+  clearTimeout(clearTimer);
+
+  clearTimer = setTimeout(()=>{
+
+    activeNotesDisplay =
+      activeNotesDisplay.filter(n => n !== note);
+
+    updateNoteScreen();
+
+  },200);
+
+}
+
+/* MOUSE CONTROLS */
+
+const keys=document.querySelectorAll(
+  '.white-key,.black-key'
+);
+
+keys.forEach(key=>{
+
+  const note=key.dataset.note;
+
+  key.addEventListener('mousedown',()=>{
+
+    startNote(note);
+    key.classList.add('active');
+
+  });
+
+  key.addEventListener('mouseup',()=>{
+
+    stopNote(note);
+    key.classList.remove('active');
+
+  });
+
+  key.addEventListener('mouseleave',()=>{
+
+    stopNote(note);
+    key.classList.remove('active');
+
+  });
+
+});
+
+/* KEYBOARD MAP */
+
+const keyboardMap={
+
+'1':'C3','2':'C#3','3':'D3','4':'D#3',
+'5':'E3','6':'F3','7':'F#3','8':'G3',
+'9':'G#3','0':'A3','-':'A#3','=':'B3',
+
+'q':'C4','w':'C#4','e':'D4','r':'D#4',
+'t':'E4','y':'F4','u':'F#4','i':'G4',
+'o':'G#4','p':'A4','[':'A#4',']':'B4',
+
+'a':'C5','s':'C#5','d':'D5','f':'D#5',
+'g':'E5','h':'F5','j':'F#5','k':'G5',
+'l':'G#5',';':'A5',"'" :'A#5' ,'z':'B5'
+
+};
+
+/* KEYBOARD PLAYING */
+
+document.addEventListener('keydown',(e)=>{
+
+  if(e.repeat) return;
+
+  const note=keyboardMap[e.key.toLowerCase()];
+
+  if(note){
+
+    startNote(note);
+
+    const activeKey=document.querySelector(
+      `[data-note="${note}"]`
+    );
+
+    if(activeKey){
+      activeKey.classList.add('active');
+    }
+
+  }
+
+});
+
+document.addEventListener('keyup',(e)=>{
+
+  const note=keyboardMap[e.key.toLowerCase()];
+
+  if(note){
+
+    stopNote(note);
+
+    const activeKey=document.querySelector(
+      `[data-note="${note}"]`
+    );
+
+    if(activeKey){
+      activeKey.classList.remove('active');
+    }
+
+  }
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,740 @@
+  /* =========================
+   DAY / NIGHT VARIABLES
+========================== */
+
+:root{
+
+  --bg1: #26acef;
+  --bg2: #61cdf8;
+  --bg3: #61cdf8;
+  --bg4: #c9e5f5;
+
+  --title:#6c3903;
+
+  --button-bg: rgb(251, 252, 163);
+  --button-border: rgb(251, 252, 163);
+
+  --cloud: rgba(255,255,255,0.75);
+
+  --texture1: rgba(255,255,255,0.5);
+  --texture2: rgba(255,255,255,0.4);
+  --texture3: rgba(255,255,255,0.3);
+
+  --commentTitle: white;
+}
+
+/* =========================
+   NIGHT MODE
+========================== */
+
+body.night{
+
+  --bg1: #07111f;
+  --bg2: #10233d;
+  --bg3: #1a3152;
+  --bg4: #324766;
+
+  
+
+  --title: #f6dca2;
+
+  --button-bg: #223550;
+  --button-border: #f6dca2;
+
+  --cloud: rgba(210,220,255,0.18);
+
+  --texture1: rgba(255,255,255,0.08);
+  --texture2: rgba(255,255,255,0.06);
+  --texture3: rgba(255,255,255,0.04);
+
+  --commentTitle: #f6dca2;
+}
+
+/* =========================
+   RESET
+========================== */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================== */
+
+body{
+
+  margin: 0;
+
+  background:
+  linear-gradient(
+  to bottom,
+  var(--bg1) 0%,
+  var(--bg2) 30%,
+  var(--bg3) 60%,
+  var(--bg4) 100%);
+
+  overflow-x: hidden;
+
+  position: relative;
+
+  transition: background 2s ease;
+
+  font-family:
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  Oxygen,
+  Ubuntu,
+  Cantarell,
+  'Open Sans',
+  'Helvetica Neue',
+  sans-serif;
+}
+
+/* =========================
+   WATERCOLOUR TEXTURE
+========================== */
+
+body::before{
+
+  content: "";
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+  radial-gradient(circle at 20% 20%,
+  var(--texture1) 0%,
+  transparent 40%),
+
+  radial-gradient(circle at 80% 30%,
+  var(--texture2) 0%,
+  transparent 35%),
+
+  radial-gradient(circle at 40% 80%,
+  var(--texture3) 0%,
+  transparent 40%);
+
+  filter: blur(40px);
+
+  opacity: 0.8;
+
+  z-index: -2;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================== */
+
+.container{
+
+  min-height: 245vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+/* =========================
+   TITLES
+========================== */
+
+.h1{
+
+  font-size: 100px;
+
+  margin-top: 350px;
+
+  color: var(--title);
+
+  text-shadow:
+  0 0 7px rgba(255,255,255,0.5);
+
+  transition: color 0.5s ease;
+   font-family:monospace ;
+}
+
+.h2{
+
+  font-size: 50px;
+
+  margin-top: 10px;
+
+  margin-bottom: 200px;
+
+  color: var(--title);
+
+  text-shadow:
+  0 0 10px rgba(255,255,255,0.4);
+
+  transition: color 0.5s ease;
+  font-family:monospace ;
+}
+
+/* =========================
+   NIGHT MODE BUTTON
+========================== */
+
+.modeToggle{
+
+  position: fixed;
+
+  top: 25px;
+  right: 25px;
+
+  height: 60px;
+  width: 140px;
+
+  border:#979595;
+
+  border-radius: 50px;
+
+  background: rgba(255,255,255,0.25);
+
+  backdrop-filter: blur(10px);
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  z-index: 1000;
+
+  transition:
+  background 0.3s ease,
+  transform 0.3s ease;
+}
+
+.modeToggle:hover{
+
+  transform: scale(1.05);
+}
+
+body.night .modeToggle{
+
+  background:rgba(143, 169, 184, 0.594);
+}
+
+
+/* =========================
+   BUTTON SECTIONS
+========================== */
+
+.buttonsection1,
+.buttonsection2{
+
+  display: flex;
+
+  gap: 50px;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+}
+
+.buttonsection1{
+
+  margin-bottom: 25px;
+}
+
+/* =========================
+   MAIN BUTTONS
+========================== */
+
+.b1,
+.b2,
+.b3,
+.b4,
+.b5,
+.b6{
+
+  height: 200px;
+  width: 280px;
+
+  background-color:rgba(255,255,255,0.8);
+
+  border-color:rgba(255,255,255,0.8);
+
+  border-radius: 40px;
+
+  border-style: solid;
+
+  cursor: pointer;
+
+  font-size: 35px;
+
+  font-family:
+  'Franklin Gothic Medium',
+  'Arial Narrow',
+  Arial,
+  sans-serif;
+
+  transition:
+  transform 0.3s ease,
+  box-shadow 0.3s ease,
+  background-color  0.5s ease,
+  color 0.15s;
+}
+
+/* BUTTON HOVER */
+
+.b1:hover,
+.b2:hover,
+.b3:hover,
+.b4:hover,
+.b5:hover,
+.b6:hover{
+
+  transform: scale(1.03);
+
+  box-shadow:
+  0 0 25px rgba(252, 220, 11, 0.35),
+  0 0 25px rgba(252, 220, 11, 0.35);
+}
+ body.night .b1:hover,
+body.night .b2:hover,
+body.night .b3:hover,
+body.night .b4:hover,
+body.night .b5:hover,
+body.night .b6:hover {
+  transform: scale(1.03);
+
+  box-shadow:
+    0 0 25px rgba(143, 169, 184, 0.594),
+    0 0 25px rgba(143, 169, 184, 0.594);
+}
+
+/* BUTTON TEXT COLORS */
+
+.b1{ color: rgba(255, 0, 0, 0.555); }
+
+.b2{ color: rgba(255, 153, 0, 0.700); }
+
+.b3{ color: rgb(255, 238, 0); }
+
+.b4{ color: rgba(5, 195, 5, 0.555); }
+
+.b5{ color: rgba(27, 160, 255, 0.555); }
+
+.b6{ color: rgba(129, 1, 189, 0.555); }
+
+/* NIGHT MODE BUTTONS */
+
+body.night .b1,
+body.night .b2,
+body.night .b3,
+body.night .b4,
+body.night .b5,
+body.night .b6{
+
+  color: #f6dca2;
+  background-color:rgba(210,220,255,0.18);
+  border-color:rgba(210,220,255,0.18);
+}
+
+/* =========================
+   FLOATING CLOUDS
+========================== */
+
+.cloud{
+
+  position: absolute;
+
+  background: var(--cloud);
+
+  border-radius: 100px;
+
+  filter: blur(2px);
+
+  animation: floatClouds linear infinite;
+
+  z-index: -1;
+}
+
+.cloud::before,
+.cloud::after{
+
+  content: "";
+
+  position: absolute;
+
+  background: var(--cloud);
+
+  border-radius: 50%;
+}
+
+/* CLOUD 1 */
+
+.c1{
+
+  width: 180px;
+  height: 60px;
+
+  top: 120px;
+  left: -250px;
+
+  animation-duration: 40s;
+}
+
+.c1::before{
+
+  width: 80px;
+  height: 80px;
+
+  top: -35px;
+  left: 25px;
+}
+
+.c1::after{
+
+  width: 100px;
+  height: 100px;
+
+  top: -45px;
+  right: 25px;
+}
+
+/* CLOUD 2 */
+
+.c2{
+
+  width: 220px;
+  height: 70px;
+
+  top: 280px;
+  left: -300px;
+
+  opacity: 0.7;
+
+  animation-duration: 55s;
+}
+
+.c2::before{
+
+  width: 90px;
+  height: 90px;
+
+  top: -40px;
+  left: 30px;
+}
+
+.c2::after{
+
+  width: 110px;
+  height: 110px;
+
+  top: -50px;
+  right: 35px;
+}
+
+/* CLOUD 3 */
+
+.c3{
+
+  width: 160px;
+  height: 55px;
+
+  top: 420px;
+  left: -220px;
+
+  opacity: 0.6;
+
+  animation-duration: 48s;
+}
+
+.c3::before{
+
+  width: 70px;
+  height: 70px;
+
+  top: -30px;
+  left: 20px;
+}
+
+.c3::after{
+
+  width: 90px;
+  height: 90px;
+
+  top: -40px;
+  right: 20px;
+}
+
+/* =========================
+   CLOUD MOVEMENT
+========================== */
+
+@keyframes floatClouds{
+
+  from{
+    transform: translateX(0);
+  }
+
+  to{
+    transform: translateX(180vw);
+  }
+}
+
+/* =========================
+   CONTACT / COMMENT BOX
+========================== */
+
+.contact-container{
+
+  margin-top: auto;
+
+  margin-bottom: 120px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+/* LEFT SIDE */
+
+.contact-left{
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 20px;
+}
+
+/* TITLE */
+
+.contact-left-title h2{
+
+  font-weight: 600;
+
+  color: var(--commentTitle);
+
+  font-size: 70px;
+
+  margin-top: 10px;
+}
+
+/* LINE */
+
+.contact-left-title hr{
+
+  border: none;
+
+  width: 577px;
+
+  height: 5px;
+
+  /* background-color: #e02368; */
+
+  border-radius: 10px;
+
+  margin-bottom: 20px; }
+
+/* INPUTS */
+
+.contact-input{
+
+  width: 400px;
+
+  border: none;
+
+  outline: none;
+
+  padding-left: 25px;
+
+  padding-right: 25px;
+
+  font-weight: 500;
+
+  color: #666;
+
+  border-radius: 50px;
+
+  background: rgba(255,255,255,0.8);
+
+  font-size: 16px;
+}
+
+/* INPUT HEIGHT */
+
+input.contact-input{
+
+  height: 50px;
+}
+
+/* TEXTAREA */
+
+textarea.contact-input{
+
+  height: 140px;
+
+  padding-top: 15px;
+
+  border-radius: 20px;
+
+  resize: none;
+  
+}
+
+/* PLACEHOLDER */
+
+.contact-input::placeholder{
+
+  color: #a9a9a9;
+}
+
+/* BUTTON */
+
+.contact-left button{
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 15px 30px;
+
+  background-color: rgba(255,255,255,0.7);
+
+  border: 2px solid #788ba993;
+
+  border-radius: 40px;
+
+  cursor: pointer;
+
+  font-size: 18px;
+ 
+  color: #979595 ;
+
+  transition: 0.3s ease;
+}
+
+.contact-left button:hover{
+
+  transform: scale(1.05);
+
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+/* =========================
+   NIGHT MODE COMMENT BOX
+========================== */
+
+body.night .contact-input{
+
+  background: rgba(255,255,255,0.12);
+
+  color: #f6dca2;
+}
+
+body.night .contact-input::placeholder{
+
+  color: rgba(246,220,162,0.7);
+}
+
+body.night .contact-left button{
+
+  background: #2d4363;
+
+  color: #f6dca2;
+
+  border: 2px solid #f6dca2;
+}
+
+/* =========================
+   MOBILE
+========================== */
+
+@media (max-width:800px){
+
+  .contact-input{
+    width: 80vw;
+  }
+
+  .contact-left-title h2{
+    font-size: 45px;
+  }
+
+  .h1{
+    font-size: 60px;
+  }
+
+  .h2{
+    font-size: 30px;
+  }
+
+  .b1,
+  .b2,
+  .b3,
+  .b4,
+  .b5,
+  .b6{
+
+    width: 85vw;
+    height: 140px;
+
+    font-size: 28px;
+  }
+}
+ /* ===== STARS ===== */
+
+.stars,
+.stars2,
+.stars3{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    opacity:0;
+    z-index:-3;
+    transition:opacity 1s ease;
+}
+
+ /* STARS */
+
+.stars,
+.stars2,
+.stars3{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 1s;
+    z-index:-3;
+}
+
+/* SHOW ONLY IN NIGHT MODE */
+
+body.night .stars,
+body.night .stars2,
+body.night .stars3{
+    opacity:1;
+}
+
+/* BIG STARS */
+
+ 
